@@ -44,4 +44,33 @@ class Solution {
         // Print the updated array (for debugging purposes)
         System.out.println(Arrays.toString(nums));
     }
+# 2460. Apply Operations to an Array
+class Solution {
+    public int[] applyOperations(int[] nums) {
+        // Step 1: Modify the array by doubling adjacent equal elements and setting the next element to 0
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) { 
+                nums[i] = nums[i] * 2; // Double the current element
+                nums[i + 1] = 0; // Set the next element to zero
+            }
+        }
+
+        // Step 2: Move all non-zero elements to the front, maintaining relative order
+        int k = 0; // Pointer to track the position for non-zero elements
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) { 
+                nums[k] = nums[i]; // Move non-zero element to index 'k'
+                k++; // Increment k for next position
+            }
+        }
+
+        // Step 3: Fill the remaining positions with zeros
+        for (int i = k; i < nums.length; i++) {
+            nums[i] = 0; // Assign zero to the remaining indices
+        }
+
+        // Return the modified array
+        return nums;
+    }
+}
 

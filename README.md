@@ -23,3 +23,25 @@ class Solution {
     }
 }
 
+# 283. Move Zeroes
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int k = 0; // Pointer to track the position for non-zero elements
+
+        // First pass: Move all non-zero elements to the front
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[k] = nums[i]; // Place non-zero element at index 'k'
+                k++; // Move pointer to the next position
+            }
+        }
+
+        // Second pass: Fill remaining positions with zeros
+        for (int i = k; i < nums.length; i++) {
+            nums[i] = 0; // Assign zero to remaining indices
+        }
+
+        // Print the updated array (for debugging purposes)
+        System.out.println(Arrays.toString(nums));
+    }
+
